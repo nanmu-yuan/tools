@@ -8,10 +8,17 @@
 </head>
 
 <body style="height: 5000px;">
+    <div style="width: 100%;">
+        <input type="text" style="width: 500px;">
+    </div>
     <script src="./tools.js"></script>
     <script>
-        document.addEventListener('scroll',throttle(function(e){
-            console.log(e)
+        // document.addEventListener('scroll',throttle(function(e){
+        //     console.log(e)
+        // },500))
+        var input = document.querySelector('input');
+        input.addEventListener('keydown',debounce(function(e){
+            console.log(e.keyCode)
         },500))
     </script>
 </body>

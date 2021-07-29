@@ -26,15 +26,28 @@ function bind(Fn, obj, ...args) {
     }
 }
 // 封装节流方法
-function throttle(callback, wait){
+function throttle(callback, wait) {
     // 起始时间
     let start = 0;
-    return function(e){
+    return function (e) {
         // 终止时间
         let now = Date.now();
-        if(now-start>wait){
-            callback.call(this,e);
+        if (now - start > wait) {
+            callback.call(this, e);
             start = now;
         }
+    }
+}
+// 封装防抖函数
+function debounce(callback, wait) {
+    let timeId = null;
+    return function (e) {
+        if (timeId !== null) {
+            clearTimeout(timeId);
+        }
+        timeId = setTimeout(() => {
+            callback.call(this, e)
+            timeId = null;
+        }, wait)
     }
 }
